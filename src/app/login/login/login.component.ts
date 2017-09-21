@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginModel } from '../models/login';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   private _post: any;
 
   constructor(private _loginService: LoginService,
-    private _fb: FormBuilder) { }
+    private _fb: FormBuilder, private _router:Router) { }
 
   ngOnInit() {
     this._model = new LoginModel("","");
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         alert("login satisfactorio!");
         console.log("asdasdadadsasdsadasd");
+        this._router.navigate(['/dashboard']);
        },
       error => {
         alert("datos incorrectos!");
