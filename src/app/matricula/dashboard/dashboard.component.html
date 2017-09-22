@@ -1,3 +1,13 @@
-<p>
-  dashboard works!
-</p>
+<div class="wrapper">
+  <div class="sidebar" data-active-color="white" data-background-color="red" data-image="../assets/img/sidebar-3.png">
+    <app-sidebar>
+    </app-sidebar>
+  </div>
+  <div class="main-panel ps-container ps-theme-defaul ps-active-y">
+    <app-dashboard-navbar>
+    </app-dashboard-navbar>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
