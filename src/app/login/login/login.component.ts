@@ -35,8 +35,6 @@ export class LoginComponent implements OnInit {
 
     this._loginService.Login(this._model)
       .subscribe(data => {
-        alert("login satisfactorio!");
-        console.log("asdasdadadsasdsadasd");
         this._router.navigate(['/dashboard']);
        },
       error => {

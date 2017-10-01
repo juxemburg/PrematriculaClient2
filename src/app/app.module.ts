@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from './http-client/http-client.module';
+import { DashboardGuardService } from 'app/matricula/dashboard-guard.service';
+import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guard.service';
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { HttpClientModule } from './http-client/http-client.module';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DashboardGuardService, MatriculaWizardGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

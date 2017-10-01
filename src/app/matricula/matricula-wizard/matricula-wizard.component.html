@@ -2,9 +2,8 @@
   <div class="col-sm-8 col-sm-offset-2">
     <div class="wizard-container">
       <div class="card wizard-card" data-color="red" id="wizard">
-        <form action="" method="" novalidate="novalidate">
-          <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
-
+        <form action="" method="" novalidate="validate">
+          <!--You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"-->
           <div class="wizard-header">
             <h3 class="wizard-title">
               Realiza tu prematrícula
@@ -13,24 +12,59 @@
           </div>
           <div class="wizard-navigation">
             <ul class="nav nav-pills">
-              <li class="active" style="width: 33.3333%;"><a href="#details" data-toggle="tab" aria-expanded="true">Account</a></li>
-              <li class="" style="width: 33.3333%;"><a href="#captain" data-toggle="tab" aria-expanded="false">Room Type</a></li>
-              <li class="" style="width: 33.3333%;"><a href="#description" data-toggle="tab" aria-expanded="false">Extra Details</a></li>
+              <li class="active" style="width: 33.3333%;"><a href="#details" data-toggle="tab" aria-expanded="true">1. Inicio</a></li>
+              <li class="" style="width: 33.3333%;"><a href="#captain" data-toggle="tab" aria-expanded="false">2. Haz tu matrícula</a></li>
+              <li class="" style="width: 33.3333%;"><a href="#description" data-toggle="tab" aria-expanded="false">3. Confirma tus cambios</a></li>
             </ul>
             <div class="moving-tab" style="width: 250px; transform: translate3d(-8px, 0px, 0px); transition: transform 0s;">Account</div>
           </div>
 
           <div class="tab-content">
             <div class="tab-pane active" id="details">
+              <h4 class="info-text">Selecciona tu programa</h4>
+              <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                  <div class="col-sm-4">
+                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="">
+                      <input type="radio" name="job" value="Design" checked="checked">
+                      <div class="icon">
+                        <i class="material-icons">school</i>
+                      </div>
+                      <h6>Programa 1</h6>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="choice active" data-toggle="wizard-radio" rel="tooltip">
+                      <input type="radio" name="job" value="Code">
+                      <div class="icon">
+                        <i class="material-icons">school</i>
+                      </div>
+                      <h6>Programa 2</h6>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="">
+                      <input type="radio" name="job" value="Code">
+                      <div class="icon">
+                        <i class="material-icons">school</i>
+                      </div>
+                      <h6>Programa 3</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="tab-pane" id="captain">
               <div class="row">
                 <div class="col-sm-12">
-                  <h4 class="info-text"> Let's start with the basic details.</h4>
+                  <h4 class="info-text"> Por favor escoge tu programa</h4>
                 </div>
                 <div class="col-sm-6">
                   <div class="input-group">
                     <span class="input-group-addon">
-                  <i class="material-icons">email</i>
-                </span>
+                      <i class="material-icons">email</i>
+                    </span>
                     <div class="form-group label-floating is-empty">
                       <label class="control-label">Your Email</label>
                       <input name="name" type="text" class="form-control">
@@ -39,75 +73,40 @@
 
                   <div class="input-group">
                     <span class="input-group-addon">
-                  <i class="material-icons">lock_outline</i>
-                </span>
+                      <i class="material-icons">lock_outline</i>
+                    </span>
                     <div class="form-group label-floating is-empty">
                       <label class="control-label">Your Password</label>
                       <input name="name2" type="password" class="form-control">
                       <span class="material-input"></span></div>
                   </div>
-
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group label-floating is-empty">
                     <label class="control-label">Country</label>
                     <select class="form-control">
-                  <option disabled="" selected=""></option>
-                                          <option value="Afghanistan"> Afghanistan </option>
-                                          <option value="Albania"> Albania </option>
-                                          <option value="Algeria"> Algeria </option>
-                                          <option value="American Samoa"> American Samoa </option>
-                                          <option value="Andorra"> Andorra </option>
-                                          <option value="Angola"> Angola </option>
-                                          <option value="Anguilla"> Anguilla </option>
-                                          <option value="Antarctica"> Antarctica </option>
-                                          <option value="...">...</option>
-                                    </select>
+                      <option disabled="" selected=""></option>
+                                              <option value="Afghanistan"> Afghanistan </option>
+                                              <option value="Albania"> Albania </option>
+                                              <option value="Algeria"> Algeria </option>
+                                              <option value="American Samoa"> American Samoa </option>
+                                              <option value="Andorra"> Andorra </option>
+                                              <option value="Angola"> Angola </option>
+                                              <option value="Anguilla"> Anguilla </option>
+                                              <option value="Antarctica"> Antarctica </option>
+                                              <option value="...">...</option>
+                                        </select>
                     <span class="material-input"></span></div>
                   <div class="form-group label-floating is-empty">
                     <label class="control-label">Daily Budget</label>
                     <select class="form-control">
-                  <option disabled="" selected=""></option>
-                                          <option value="Afghanistan"> &lt; $100 </option>
-                                          <option value="Albania"> $100 - $499 </option>
-                                          <option value="Algeria"> $499 - $999 </option>
-                                          <option value="American Samoa"> $999+ </option>
-                                    </select>
+                      <option disabled="" selected=""></option>
+                                              <option value="Afghanistan"> &lt; $100 </option>
+                                              <option value="Albania"> $100 - $499 </option>
+                                              <option value="Algeria"> $499 - $999 </option>
+                                              <option value="American Samoa"> $999+ </option>
+                                        </select>
                     <span class="material-input"></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane" id="captain">
-              <h4 class="info-text">What type of room would you want? </h4>
-              <div class="row">
-                <div class="col-sm-10 col-sm-offset-1">
-                  <div class="col-sm-4">
-                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="This is good if you travel alone.">
-                      <input type="radio" name="job" value="Design">
-                      <div class="icon">
-                        <i class="material-icons">weekend</i>
-                      </div>
-                      <h6>Single</h6>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="choice active" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="Select this room if you're traveling with your family.">
-                      <input type="radio" name="job" value="Code" checked="checked">
-                      <div class="icon">
-                        <i class="material-icons">home</i>
-                      </div>
-                      <h6>Family</h6>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="" data-original-title="Select this option if you are coming with your team.">
-                      <input type="radio" name="job" value="Code">
-                      <div class="icon">
-                        <i class="material-icons">business</i>
-                      </div>
-                      <h6>Business</h6>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -132,21 +131,11 @@
           </div>
           <div class="wizard-footer">
             <div class="pull-right">
-              <input type="button" class="btn btn-next btn-fill btn-danger btn-wd" name="next" value="Next" style="">
-              <input type="button" class="btn btn-finish btn-fill btn-danger btn-wd" name="finish" value="Finish" style="display: none;">
+              <input type="button" class="btn btn-next btn-fill btn-danger btn-wd" name="next" value="Siguiente" style="">
+              <input type="button" class="btn btn-finish btn-fill btn-danger btn-wd" name="finish" value="Terminar" style="display: none;">
             </div>
             <div class="pull-left">
-              <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Previous">
-
-              <div class="footer-checkbox" style="opacity: 1; visibility: visible; position: absolute;">
-                <div class="col-sm-12">
-                  <div class="checkbox">
-                    <label>
-                  <input type="checkbox" name="optionsCheckboxes"><span class="checkbox-material"><span class="check"></span></span>
-                </label> Subscribe to our newsletter
-                  </div>
-                </div>
-              </div>
+              <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Atrás">
             </div>
             <div class="clearfix"></div>
           </div>

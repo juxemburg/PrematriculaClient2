@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Materia } from 'app/matricula/models/matricula-models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-matricula-wizard',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatriculaWizardComponent implements OnInit {
 
-  constructor() { }
+
+  private _programaId:string;
+
+  constructor(private _route: ActivatedRoute) { 
+
+  }
 
   ngOnInit() {
+    this._programaId = this._route.snapshot.paramMap.get('id');
   }
+
+
 
 }

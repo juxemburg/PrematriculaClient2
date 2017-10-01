@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class HttpService {
 
-  private _baseUrl: string = "http://localhost:8080/api"
+  private _baseUrl: string = "http://localhost:8080/api";
   constructor(private _http: Http) { }
 
   public Get<T>(subUrl: string): Observable<T> {
@@ -22,6 +22,6 @@ export class HttpService {
   }
   
   private getUrl(subUrl: string): string {
-    return `${this._baseUrl}/${subUrl}`
+    return `${this._baseUrl}/${subUrl}`;
   }
 }

@@ -7,9 +7,6 @@
 </div>
 <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="0a316604-9dbb-0b97-3e91-d2837d461e4a">
     <div class="user">
-        <!-- <div class="photo">
-              <img src="../assets/img/faces/avatar.jpg">
-          </div> -->
         <div class="info text-center">
             <h5 class="title text-white">
                 Nombre usuario
@@ -19,15 +16,27 @@
 
     <div class="nav-container">
         <ul class="nav">
-            <li class="active">
-                <a routerLink="wizard">
+            <li *ngIf="_programas">
+                <a data-toggle="collapse" href="#Components" class="collapsed" aria-expanded="false">
                     <i class="material-icons">dashboard</i>
-                    <p>Prematrícula</p>
+                    <p>Prematrícula<b class="caret"></b></p>
                 </a>
+                <div class="collapse" id="Components" aria-expanded="false" style="height: 0px;">
+                    <ul class="nav">
+                        <li *ngFor ="let prog of _programas"
+                            [class.active]='isActive("IS")' 
+                            (click)="onItemClick($event, 'IS')">
+                            <a routerLink="wizard/{{prog.id}}">
+                                <span class="sidebar-mini">{{prog.codigo}}</span>
+                                <span class="sidebar-normal">{{prog.nombre}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li class="">
+            <li class="" (click)="onItemClick($event, 'PS')">
                 <a href="curriculum">
-                    <i class="material-icons">class</i>
+                    <i class="material-icons">apps</i>
                     <p>Tu plan de estudios</p>
                 </a>
             </li>

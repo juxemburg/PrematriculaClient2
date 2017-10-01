@@ -5,6 +5,10 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatriculaWizardComponent } from './matricula-wizard/matricula-wizard.component';
 import { DashboardNavbarComponent } from './dashboard-navbar/dashboard-navbar.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { MatriculaService } from 'app/matricula/matricula.service';
+import { DashboardGuardService } from 'app/matricula/dashboard-guard.service';
+import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guard.service';
 
 @NgModule({
   imports: [
@@ -12,13 +16,18 @@ import { DashboardNavbarComponent } from './dashboard-navbar/dashboard-navbar.co
     RouterModule.forChild([
       {
         path: 'dashboard',
+        canActivate:[DashboardGuardService],
         component: DashboardComponent,
         children: [
-          {path:'', component: MatriculaWizardComponent},
-          {path:'wizard', component: MatriculaWizardComponent}]
+          {path:'', component: WelcomeComponent},
+          {path:'welcome', component: WelcomeComponent},
+          {path:'wizard/:id',
+          canActivate: [MatriculaWizardGuardService],
+          component: MatriculaWizardComponent}]
       },
     ])
   ],
-  declarations: [DashboardComponent, SidebarComponent, MatriculaWizardComponent, DashboardNavbarComponent]
+  declarations: [DashboardComponent, SidebarComponent, MatriculaWizardComponent, DashboardNavbarComponent, WelcomeComponent],
+  providers:[MatriculaService]
 })
 export class MatriculaModule { }
