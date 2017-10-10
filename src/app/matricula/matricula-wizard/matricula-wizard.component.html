@@ -8,47 +8,43 @@
             <h3 class="wizard-title">
               Realiza tu prematrícula
             </h3>
-            <h5>Por favor, digita regálanos la siguiente información.</h5>
+            <h5>Por favor, regálanos la siguiente información.</h5>
           </div>
           <div class="wizard-navigation">
             <ul class="nav nav-pills">
               <li class="active" style="width: 33.3333%;"><a href="#details" data-toggle="tab" aria-expanded="true">1. Inicio</a></li>
-              <li class="" style="width: 33.3333%;"><a href="#captain" data-toggle="tab" aria-expanded="false">2. Haz tu matrícula</a></li>
+              <li class="" style="width: 33.3333%;"><a href="#captain" data-toggle="tab" aria-expanded="false">2. Haz tu prematrícula</a></li>
               <li class="" style="width: 33.3333%;"><a href="#description" data-toggle="tab" aria-expanded="false">3. Confirma tus cambios</a></li>
             </ul>
-            <div class="moving-tab" style="width: 250px; transform: translate3d(-8px, 0px, 0px); transition: transform 0s;">Account</div>
+            <div class="moving-tab" style="width: 250px; transform: translate3d(-8px, 0px, 0px); transition: transform 0s;">1. Inicio</div>
           </div>
 
           <div class="tab-content">
             <div class="tab-pane active" id="details">
-              <h4 class="info-text">Selecciona tu programa</h4>
+              <h4 class="info-text">Datos de la prematrícula</h4>
               <div class="row">
+                <div class="col-sm-12">
+                  <h3 class="title"></h3>
+                </div>
+                <div class="col-sm-offset-3">
+                  <dl class="dl-horizontal">
+                    <dt>Nombre Estudiante: </dt>
+                    <dd>Juan Montaño</dd>
+                    <dt>Programa: </dt>
+                    <dd>Ingeniería de Sistemas</dd>
+                    <dt>Semestre: </dt>
+                    <dd>10</dd>
+                  </dl>
+                </div>
                 <div class="col-sm-10 col-sm-offset-1">
-                  <div class="col-sm-4">
+
+                  <div class="col-sm-4 col-sm-offset-4">
                     <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="">
                       <input type="radio" name="job" value="Design" checked="checked">
                       <div class="icon">
-                        <i class="material-icons">school</i>
+                        <i class="material-icons">check</i>
                       </div>
-                      <h6>Programa 1</h6>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="choice active" data-toggle="wizard-radio" rel="tooltip">
-                      <input type="radio" name="job" value="Code">
-                      <div class="icon">
-                        <i class="material-icons">school</i>
-                      </div>
-                      <h6>Programa 2</h6>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="">
-                      <input type="radio" name="job" value="Code">
-                      <div class="icon">
-                        <i class="material-icons">school</i>
-                      </div>
-                      <h6>Programa 3</h6>
+                      <h6>Confirmar Cambios</h6>
                     </div>
                   </div>
                 </div>
@@ -60,53 +56,84 @@
                 <div class="col-sm-12">
                   <h4 class="info-text"> Por favor escoge tu programa</h4>
                 </div>
-                <div class="col-sm-6">
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <i class="material-icons">email</i>
-                    </span>
-                    <div class="form-group label-floating is-empty">
-                      <label class="control-label">Your Email</label>
-                      <input name="name" type="text" class="form-control">
-                      <span class="material-input"></span></div>
+                <div class="col-sm-10 col-sm-offset-1">
+                  <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist">
+                    <div class="panel panel-default">
+                      <div class="panel-heading" id="headingOne" role="tab">
+                        <a aria-controls="collapseOne" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#collapseOne"
+                          role="button" class="collapsed">
+                          <h4 class="panel-title">
+                            8 Semeste
+                            <i class="material-icons">keyboard_arrow_down</i>
+                          </h4>
+                        </a>
+                      </div>
+                      <div aria-labelledby="headingOne" class="panel-collapse collapse" id="collapseOne" role="tabpanel" aria-expanded="false"
+                        style="height: 0px;">
+                        <div class="panel-body">
+                          <button value="Redes" class="btn btn-default btn-round">
+                            Redes
+                          </button>
+                          <button value="Redes" class="btn btn-default btn-round">
+                            Proyecto I
+                          </button>
+                          <button value="Redes" class="btn btn-default btn-round">
+                            Investigación de Operaciones
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading" id="headingTwo" role="tab">
+                        <a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"
+                          role="button">
+                          <h4 class="panel-title">
+                            9 Semestre
+                            <i class="material-icons">keyboard_arrow_down</i>
+                          </h4>
+                        </a>
+                      </div>
+                      <div aria-labelledby="headingTwo" class="panel-collapse collapse" id="collapseTwo" role="tabpanel" aria-expanded="false"
+                        style="height: 0px;">
+                        <div class="panel-body">
+                            <button value="Redes" class="btn btn-default btn-round">
+                                Fundamentos de la Economía
+                              </button>
+                              <button value="Redes" class="btn btn-default btn-round">
+                                Proyecto II
+                              </button>
+                              <button value="Redes" class="btn btn-default btn-round">
+                                Gestión de Proyectos Informáticos
+                              </button>
+                              <button value="Redes" class="btn btn-default btn-round">
+                                Gestión Empresarial
+                              </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading" id="headingThree" role="tab">
+                        <a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-parent="#accordion" data-toggle="collapse"
+                          href="#collapseThree" role="button">
+                          <h4 class="panel-title">
+                            10 Semestre
+                            <i class="material-icons">keyboard_arrow_down</i>
+                          </h4>
+                        </a>
+                      </div>
+                      <div aria-labelledby="headingThree" class="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-expanded="false"
+                        style="height: 0px;">
+                        <div class="panel-body">
+                            <button value="Redes" class="btn btn-default btn-round">
+                                Proyecto de Grado
+                              </button>
+                            <button value="Redes" class="btn btn-default btn-round">
+                              Legislación Laboral
+                            </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <div class="input-group">
-                    <span class="input-group-addon">
-                      <i class="material-icons">lock_outline</i>
-                    </span>
-                    <div class="form-group label-floating is-empty">
-                      <label class="control-label">Your Password</label>
-                      <input name="name2" type="password" class="form-control">
-                      <span class="material-input"></span></div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">Country</label>
-                    <select class="form-control">
-                      <option disabled="" selected=""></option>
-                                              <option value="Afghanistan"> Afghanistan </option>
-                                              <option value="Albania"> Albania </option>
-                                              <option value="Algeria"> Algeria </option>
-                                              <option value="American Samoa"> American Samoa </option>
-                                              <option value="Andorra"> Andorra </option>
-                                              <option value="Angola"> Angola </option>
-                                              <option value="Anguilla"> Anguilla </option>
-                                              <option value="Antarctica"> Antarctica </option>
-                                              <option value="...">...</option>
-                                        </select>
-                    <span class="material-input"></span></div>
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">Daily Budget</label>
-                    <select class="form-control">
-                      <option disabled="" selected=""></option>
-                                              <option value="Afghanistan"> &lt; $100 </option>
-                                              <option value="Albania"> $100 - $499 </option>
-                                              <option value="Algeria"> $499 - $999 </option>
-                                              <option value="American Samoa"> $999+ </option>
-                                        </select>
-                    <span class="material-input"></span></div>
                 </div>
               </div>
             </div>

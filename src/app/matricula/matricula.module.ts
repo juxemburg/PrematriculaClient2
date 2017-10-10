@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MatriculaService } from 'app/matricula/matricula.service';
 import { DashboardGuardService } from 'app/matricula/dashboard-guard.service';
 import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guard.service';
+import { MateriaService } from 'app/matricula/materia.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guar
         canActivate:[DashboardGuardService],
         component: DashboardComponent,
         children: [
-          {path:'', component: WelcomeComponent},
+          {path:'', redirectTo: 'welcome', pathMatch: 'full'},
           {path:'welcome', component: WelcomeComponent},
           {path:'wizard/:id',
           canActivate: [MatriculaWizardGuardService],
@@ -28,6 +29,6 @@ import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guar
     ])
   ],
   declarations: [DashboardComponent, SidebarComponent, MatriculaWizardComponent, DashboardNavbarComponent, WelcomeComponent],
-  providers:[MatriculaService]
+  providers:[MatriculaService, MateriaService]
 })
 export class MatriculaModule { }

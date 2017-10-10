@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
   }
 
   do_login(data:any) {
-    this._model.user = data.user;
-    this._model.password = data.password;
+    this._model.usuario = data.user;
+    this._model.contrasena = data.password;
 
     this._loginService.Login(this._model)
       .subscribe(data => {

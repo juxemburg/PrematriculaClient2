@@ -9,23 +9,23 @@
     <div class="user">
         <div class="info text-center">
             <h5 class="title text-white">
-                Nombre usuario
+                {{_est.nombres}}
             </h5>
         </div>
     </div>
 
     <div class="nav-container">
         <ul class="nav">
-            <li *ngIf="_programas">
+            <li *ngIf="_programas.length >0">
                 <a data-toggle="collapse" href="#Components" class="collapsed" aria-expanded="false">
                     <i class="material-icons">dashboard</i>
                     <p>Prematrícula<b class="caret"></b></p>
                 </a>
                 <div class="collapse" id="Components" aria-expanded="false" style="height: 0px;">
                     <ul class="nav">
-                        <li *ngFor ="let prog of _programas"
-                            [class.active]='isActive("IS")' 
-                            (click)="onItemClick($event, 'IS')">
+                        <li *ngFor ="let prog of _programas; let i = index"
+                            [class.active]='isActive(prog.codigo)' 
+                            (click)='onItemClick($event, prog.codigo)'>
                             <a routerLink="wizard/{{prog.id}}">
                                 <span class="sidebar-mini">{{prog.codigo}}</span>
                                 <span class="sidebar-normal">{{prog.nombre}}</span>
