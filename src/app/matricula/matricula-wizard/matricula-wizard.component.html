@@ -54,16 +54,19 @@
             <div class="tab-pane" id="captain">
               <div class="row">
                 <div class="col-sm-12">
-                  <h4 class="info-text"> Por favor escoge tu programa</h4>
+                  <h4 class="info-text"> Por favor selecciona tus materias</h4>
                 </div>
-                <div class="col-sm-10 col-sm-offset-1">
+                <div class="col-sm-8" *ngIf="_materias">
+                    <h5 class="title text-center">
+                        Tus materias
+                    </h5>
                   <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" *ngFor="let grp of _materias">
                       <div class="panel-heading" id="headingOne" role="tab">
                         <a aria-controls="collapseOne" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#collapseOne"
                           role="button" class="collapsed">
                           <h4 class="panel-title">
-                            8 Semeste
+                            {{grp.numSemestre}} Semeste
                             <i class="material-icons">keyboard_arrow_down</i>
                           </h4>
                         </a>
@@ -71,70 +74,23 @@
                       <div aria-labelledby="headingOne" class="panel-collapse collapse" id="collapseOne" role="tabpanel" aria-expanded="false"
                         style="height: 0px;">
                         <div class="panel-body">
-                          <button value="Redes" class="btn btn-default btn-round">
-                            Redes
-                          </button>
-                          <button value="Redes" class="btn btn-default btn-round">
-                            Proyecto I
-                          </button>
-                          <button value="Redes" class="btn btn-default btn-round">
-                            Investigación de Operaciones
-                          </button>
+                          <div *ngFor="let mat of grp.materias">
+                              <app-matricula-materia [materia]="mat">
+                                </app-matricula-materia>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading" id="headingTwo" role="tab">
-                        <a aria-controls="collapseTwo" aria-expanded="false" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo"
-                          role="button">
-                          <h4 class="panel-title">
-                            9 Semestre
-                            <i class="material-icons">keyboard_arrow_down</i>
-                          </h4>
-                        </a>
-                      </div>
-                      <div aria-labelledby="headingTwo" class="panel-collapse collapse" id="collapseTwo" role="tabpanel" aria-expanded="false"
-                        style="height: 0px;">
-                        <div class="panel-body">
-                            <button value="Redes" class="btn btn-default btn-round">
-                                Fundamentos de la Economía
-                              </button>
-                              <button value="Redes" class="btn btn-default btn-round">
-                                Proyecto II
-                              </button>
-                              <button value="Redes" class="btn btn-default btn-round">
-                                Gestión de Proyectos Informáticos
-                              </button>
-                              <button value="Redes" class="btn btn-default btn-round">
-                                Gestión Empresarial
-                              </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading" id="headingThree" role="tab">
-                        <a aria-controls="collapseThree" aria-expanded="false" class="collapsed" data-parent="#accordion" data-toggle="collapse"
-                          href="#collapseThree" role="button">
-                          <h4 class="panel-title">
-                            10 Semestre
-                            <i class="material-icons">keyboard_arrow_down</i>
-                          </h4>
-                        </a>
-                      </div>
-                      <div aria-labelledby="headingThree" class="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-expanded="false"
-                        style="height: 0px;">
-                        <div class="panel-body">
-                            <button value="Redes" class="btn btn-default btn-round">
-                                Proyecto de Grado
-                              </button>
-                            <button value="Redes" class="btn btn-default btn-round">
-                              Legislación Laboral
-                            </button>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
+                <div class="col-sm-4">
+                  <h5 class="title text-center">
+                    Tu prematrícula
+                  </h5>
+
+                </div>
+
               </div>
             </div>
             <div class="tab-pane" id="description">

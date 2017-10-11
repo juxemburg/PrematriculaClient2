@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'app/http-client/http.service';
-import { Materia } from 'app/matricula/models/matricula-models';
+import { Materia, MateriaGroup } from 'app/matricula/models/matricula-models';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class MateriaService {
      
   }
 
-  public getMaterias(idProg) :Observable<Materia> {
+  public getMaterias(idProg) :Observable<MateriaGroup[]> {
     return this._httpService.Get(`materias?idProg=${idProg}`);
   }
 }

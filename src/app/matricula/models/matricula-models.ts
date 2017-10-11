@@ -1,7 +1,13 @@
 export class Materia {
 
-    constructor(public _id: string, public _nombre: string,
-        public _numSemestre: number, public _idProg: string) { }
+    constructor(public id: string, public nombre: string,
+        public numSemestre: number, public idProg: string) { }
+}
+
+export class MateriaGroup {
+    constructor(public numSemestre:string, 
+        public materias: Materia[]) {
+    }
 }
 
 export class Programa {
