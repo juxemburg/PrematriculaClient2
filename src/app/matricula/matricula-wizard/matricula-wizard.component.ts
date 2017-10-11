@@ -14,6 +14,8 @@ export class MatriculaWizardComponent implements OnInit {
 
   private _programaId:string;
   private _materias:MateriaGroup[];
+  private _selectedMaterias:any;
+  private getKeys = Object.keys;
 
   constructor(private _route: ActivatedRoute,  
     private _service: MatriculaService,
@@ -24,6 +26,11 @@ export class MatriculaWizardComponent implements OnInit {
   ngOnInit() {
     this._programaId = this._route.snapshot.paramMap.get('id');
     this.loadMaterias();
+    this._selectedMaterias = {};
+  }
+
+  onMateriaSelected(info: any) {
+    this.selectMateria(info.result as Materia, info.value);
   }
 
   private loadMaterias() {
@@ -34,4 +41,15 @@ export class MatriculaWizardComponent implements OnInit {
         console.log("error loading data: "+err);
       });
   }
+
+  private selectMateria(materia:Materia, value:boolean) {
+    if(value) {
+      this._selectedMaterias[materia.id] = materia;
+      
+    }
+    else {
+      this._selectedMaterias[materia.id] = null;
+    }
+  }
+
 }

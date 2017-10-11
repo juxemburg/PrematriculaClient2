@@ -11,6 +11,7 @@ import { DashboardGuardService } from 'app/matricula/dashboard-guard.service';
 import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guard.service';
 import { MateriaService } from 'app/matricula/materia.service';
 import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia.component';
+import { MatriculaMateriaSelectedComponent } from './matricula-materia-selected/matricula-materia-selected.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia
       },
     ])
   ],
-  declarations: [DashboardComponent, SidebarComponent, MatriculaWizardComponent, DashboardNavbarComponent, WelcomeComponent, MatriculaMateriaComponent],
+  declarations: [DashboardComponent, SidebarComponent, MatriculaWizardComponent, DashboardNavbarComponent, WelcomeComponent, MatriculaMateriaComponent, MatriculaMateriaSelectedComponent],
   providers:[MatriculaService, MateriaService]
 })
 export class MatriculaModule { }

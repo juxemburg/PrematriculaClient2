@@ -1,6 +1,11 @@
 <div class="togglebutton" *ngIf="materia">
   <label>
-        <input type="checkbox">
+        <input type="checkbox" [(ngModel)]="_active"
+            (click)="onClickEvent()">
         {{materia.nombre}}
     </label>
 </div>
+<button class="btn btn-info btn-round" 
+    (click)="onClickEvent()">
+    click me!
+</button>

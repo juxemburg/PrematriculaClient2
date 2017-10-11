@@ -75,8 +75,10 @@
                         style="height: 0px;">
                         <div class="panel-body">
                           <div *ngFor="let mat of grp.materias">
-                              <app-matricula-materia [materia]="mat">
-                                </app-matricula-materia>
+                              <app-matricula-materia 
+                                [materia]="mat"
+                                (onMateriaSelected)="onMateriaSelected($event)">
+                              </app-matricula-materia>
                           </div>
                         </div>
                       </div>
@@ -88,9 +90,14 @@
                   <h5 class="title text-center">
                     Tu prematrícula
                   </h5>
-
+                  <div class="col-sm-12" *ngIf="_selectedMaterias">
+                    <div *ngFor="let key of getKeys(_selectedMaterias)">
+                      <app-matricula-materia-selected
+                        [materia]="_selectedMaterias[key]">
+                      </app-matricula-materia-selected>
+                    </div>
+                  </div>
                 </div>
-
               </div>
             </div>
             <div class="tab-pane" id="description">
