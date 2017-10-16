@@ -66,7 +66,10 @@
   }
   
   .text-primary {
-    color: #9c27b0;
+    color: #D33030;
+  }
+  th {
+    font-weight: 700 !important;
   }
   
   .text-danger {
@@ -657,11 +660,35 @@
     margin-top: -11px;
   }
   .form-group select {
-    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, gray 50%),
+      linear-gradient(135deg, gray 50%, transparent 50%),
+      radial-gradient(rgb(255, 255, 255) 70%, transparent 72%);
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      calc(100% - .7em) .7em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1.5em 1.5em;
+    background-repeat: no-repeat;
   }
   .form-group select ~ .material-input:after {
     display: none;
   }
+  .label-select {
+    font-size: 1.0em !important;
+    margin-bottom: 2% !important;
+  }
+
+  select:after {
+    content: "▼";
+  }
+  select {
+    content: "▼";
+  }
+
   
   .form-control {
     margin-bottom: 7px;
@@ -1010,6 +1037,12 @@
     background-color: transparent;
     color: #9c27b0;
   }
+  .btn.btn-white, .btn.btn-white:focus, .btn.btn-white:hover, .navbar .navbar-nav > li > a.btn.btn-white, .navbar .navbar-nav > li > a.btn.btn-white:focus, .navbar .navbar-nav > li > a.btn.btn-white:hover {
+    background-color: #FFF;
+    color: #555;
+    font-weight: 600;
+    text-shadow: #000;
+}
   .btn.btn-info {
     box-shadow: 0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12);
   }

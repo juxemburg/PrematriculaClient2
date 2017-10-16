@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Programa, Estudiante } from 'app/matricula/models/matricula-models';
 import { MatriculaService } from 'app/matricula/matricula.service';
 import { UserService } from 'app/login/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,10 +15,10 @@ export class SidebarComponent implements OnInit {
   private _activeCode: string;
   private _programas: Programa[] = [];
   constructor(private _service: MatriculaService,
-    private _usrService:UserService) { }
+    private _usrService:UserService,
+    private _router: Router) { }
 
   ngOnInit() {
-    this._activeCode = '';
     this._est = this._usrService.GetUser();
     this.loadPrograms();
   }
@@ -32,12 +33,11 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  onItemClick($event, code) {
-    this._activeCode = code;
-  }
 
-  isActive(code) {
-    return this._activeCode === code;
+
+  do_logoff(){
+    this._usrService.RemoveUser();
+    this._router.navigate(['/login']);
   }
 
 }

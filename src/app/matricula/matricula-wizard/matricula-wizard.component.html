@@ -12,58 +12,33 @@
           </div>
           <div class="wizard-navigation">
             <ul class="nav nav-pills">
-              <li class="active" style="width: 33.3333%;"><a href="#details" data-toggle="tab" aria-expanded="true">1. Inicio</a></li>
-              <li class="" style="width: 33.3333%;"><a href="#captain" data-toggle="tab" aria-expanded="false">2. Haz tu prematrícula</a></li>
-              <li class="" style="width: 33.3333%;"><a href="#description" data-toggle="tab" aria-expanded="false">3. Confirma tus cambios</a></li>
+              <li class="active" style="width: 33.3333%;">
+                <a href="#details" data-toggle="tab" aria-expanded="true">1. Selecciona tus materias</a>
+              </li>
+              <li class="" style="width: 33.3333%;">
+                <a href="#captain" data-toggle="tab" aria-expanded="false">2. Ingresa tus electivas y FISH</a>
+              </li>
+              <li class="" style="width: 33.3333%;">
+                <a href="#description" data-toggle="tab" aria-expanded="false">3. Verifica tus datos</a>
+              </li>
             </ul>
             <div class="moving-tab" style="width: 250px; transform: translate3d(-8px, 0px, 0px); transition: transform 0s;">1. Inicio</div>
           </div>
 
           <div class="tab-content">
             <div class="tab-pane active" id="details">
-              <h4 class="info-text">Datos de la prematrícula</h4>
               <div class="row">
                 <div class="col-sm-12">
-                  <h3 class="title"></h3>
+                  <h4 class="info-text"> Selecciona las materias que planeas ver el siguiente semestre</h4>
                 </div>
-                <div class="col-sm-offset-3">
-                  <dl class="dl-horizontal">
-                    <dt>Nombre Estudiante: </dt>
-                    <dd>Juan Montaño</dd>
-                    <dt>Programa: </dt>
-                    <dd>Ingeniería de Sistemas</dd>
-                    <dt>Semestre: </dt>
-                    <dd>10</dd>
-                  </dl>
-                </div>
-                <div class="col-sm-10 col-sm-offset-1">
-
-                  <div class="col-sm-4 col-sm-offset-4">
-                    <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="">
-                      <input type="radio" name="job" value="Design" checked="checked">
-                      <div class="icon">
-                        <i class="material-icons">check</i>
-                      </div>
-                      <h6>Confirmar Cambios</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="tab-pane" id="captain">
-              <div class="row">
-                <div class="col-sm-12">
-                  <h4 class="info-text"> Por favor selecciona tus materias</h4>
-                </div>
-                <div class="col-sm-8" *ngIf="_materias">
-                    <h5 class="title text-center">
-                        Tus materias
-                    </h5>
+                <div class="col-sm-7" *ngIf="_materias">
+                  <h5 class="title text-center">
+                    Tus materias
+                  </h5>
                   <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist">
                     <div class="panel panel-default" *ngFor="let grp of _materias">
                       <div class="panel-heading" id="headingOne" role="tab">
-                        <a aria-controls="collapseOne" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#collapseOne"
+                        <a aria-controls="headingOne" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#grp-{{grp.numSemestre}}"
                           role="button" class="collapsed">
                           <h4 class="panel-title">
                             {{grp.numSemestre}} Semeste
@@ -71,14 +46,12 @@
                           </h4>
                         </a>
                       </div>
-                      <div aria-labelledby="headingOne" class="panel-collapse collapse" id="collapseOne" role="tabpanel" aria-expanded="false"
+                      <div aria-labelledby="headingOne" class="panel-collapse collapse" id="grp-{{grp.numSemestre}}" role="tabpanel" aria-expanded="false"
                         style="height: 0px;">
                         <div class="panel-body">
-                          <div *ngFor="let mat of grp.materias">
-                              <app-matricula-materia 
-                                [materia]="mat"
-                                (onMateriaSelected)="onMateriaSelected($event)">
-                              </app-matricula-materia>
+                          <div *ngFor="let mat of grp.materias" class="col-sm-6">
+                            <app-matricula-materia [materia]="mat" (onMateriaSelected)="onMateriaSelected($event)">
+                            </app-matricula-materia>
                           </div>
                         </div>
                       </div>
@@ -86,34 +59,95 @@
 
                   </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                   <h5 class="title text-center">
                     Tu prematrícula
                   </h5>
                   <div class="col-sm-12" *ngIf="_selectedMaterias">
                     <div *ngFor="let key of getKeys(_selectedMaterias)">
-                      <app-matricula-materia-selected
-                        [materia]="_selectedMaterias[key]">
+                      <app-matricula-materia-selected [materia]="_selectedMaterias[key]">
                       </app-matricula-materia-selected>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="tab-pane" id="captain">
+              <div class="row">
+                <div class="col-sm-6 col-lg-5 col-lg-offset-1">
+                  <div class="form-group">
+                    <label class="control-label label-select">
+                      ¿Cuántas electivas piensas matricular el próximo semestre?
+                    </label>
+                    <select class=" btn btn-white btn-round">
+                      <option value="0">No pienso ver electivas</option>
+                      <option value="1">1 Electiva</option>
+                      <option value="2">2 Electivas</option>
+                      <option value="3">3 Electivas</option>
+                      <option value="4">Más de 3 Electivas</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label label-select">
+                      ¿Cuántas electivas FISH piensas ver el próximo semestre?
+                    </label>
+                    <select class=" btn btn-white btn-round">
+                      <option value="0">No pienso matricular FISH</option>
+                      <option value="1">1 FISH</option>
+                      <option value="2">2 FISH</option>
+                      <option value="3">3 FISH</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="col-sm-6 col-lg-5">
+                  <div class="form-group">
+                    <label class="control-label label-select">
+                      ¿Tienes pensado matricular ética el próximo semestre?
+                    </label>
+                    <select class=" btn btn-white btn-round">
+                      <option value="0">Sí</option>
+                      <option value="1">No</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label label-select">
+                      ¿Tienes pensado matricular Actividad Física Formativa?
+                    </label>
+                    <select class=" btn btn-white btn-round">
+                      <option value="0">Sí</option>
+                      <option value="1">No</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="tab-pane" id="description">
               <div class="row">
-                <h4 class="info-text"> Drop us a small description.</h4>
-                <div class="col-sm-6 col-sm-offset-1">
-                  <div class="form-group is-empty">
-                    <label>Room description</label>
-                    <textarea class="form-control" placeholder="" rows="6"></textarea>
-                    <span class="material-input"></span></div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label class="control-label">Example</label>
-                    <p class="description">"The room really nice name is recognized as being a really awesome room. We use it every sunday when
-                      we go fishing and we catch a lot. It has some kind of magic shield around it."</p>
+                <div class="col-sm-12 col-lg-10 col-lg-offset-1">
+                  <div class="card card-plain">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                      <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                      <h4 class="card-title">Tu Matrícula</h4>
+                      <div class="content table-responsive">
+                        <table class="table">
+                          <thead class="text-primary">
+                            <tr>
+                              <th>Semestre</th>
+                              <th class="text-center">Materia</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let key of getKeys(_selectedMaterias)">
+                              <td class="text-center">{{_selectedMaterias[key].numSemestre}}</td>
+                              <td class="text-center">{{_selectedMaterias[key].nombre}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -122,7 +156,7 @@
           <div class="wizard-footer">
             <div class="pull-right">
               <input type="button" class="btn btn-next btn-fill btn-danger btn-wd" name="next" value="Siguiente" style="">
-              <input type="button" class="btn btn-finish btn-fill btn-danger btn-wd" name="finish" value="Terminar" style="display: none;">
+              <input type="submit" class="btn btn-finish btn-fill btn-danger btn-wd" name="finish" value="Terminar" style="display: none;">
             </div>
             <div class="pull-left">
               <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Atrás">

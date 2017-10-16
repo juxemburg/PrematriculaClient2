@@ -19,13 +19,13 @@
             <li *ngIf="_programas.length >0">
                 <a data-toggle="collapse" href="#Components" class="collapsed" aria-expanded="false">
                     <i class="material-icons">dashboard</i>
-                    <p>Prematrícula<b class="caret"></b></p>
+                    <p>Prematrícula
+                        <b class="caret"></b>
+                    </p>
                 </a>
                 <div class="collapse" id="Components" aria-expanded="false" style="height: 0px;">
                     <ul class="nav">
-                        <li *ngFor ="let prog of _programas; let i = index"
-                            [class.active]='isActive(prog.codigo)' 
-                            (click)='onItemClick($event, prog.codigo)'>
+                        <li *ngFor="let prog of _programas; let i = index"  routerLinkActive="active">
                             <a routerLink="wizard/{{prog.id}}">
                                 <span class="sidebar-mini">{{prog.codigo}}</span>
                                 <span class="sidebar-normal">{{prog.nombre}}</span>
@@ -34,11 +34,18 @@
                     </ul>
                 </div>
             </li>
-            <li class="" (click)="onItemClick($event, 'PS')">
-                <a href="curriculum">
+            <li class="" routerLinkActive="active">
+                <a routerLink="curriculum">
                     <i class="material-icons">apps</i>
                     <p>Tu plan de estudios</p>
                 </a>
+            </li>
+            <li class="">
+                <button class="btn btn-simple btn-white"
+                 (click)="do_logoff()">
+                    <i class="material-icons">exit_to_app</i>
+                    <p class="white">Cerrar Sesión</p>
+                </button>
             </li>
         </ul>
     </div>
