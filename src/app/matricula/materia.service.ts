@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'app/http-client/http.service';
-import { Materia, MateriaGroup } from 'app/matricula/models/matricula-models';
+import { Materia, MateriaGroup, Prematricula } from 'app/matricula/models/matricula-models';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -11,6 +11,14 @@ export class MateriaService {
   }
 
   public getMaterias(idProg) :Observable<MateriaGroup[]> {
-    return this._httpService.Get(`materias?idProg=${idProg}`);
+    return this._httpService
+      .Get<MateriaGroup[]>(`materias?idProg=${idProg}`);
   }
+
+  public postPrematricula(data:Prematricula):Observable<any> {
+    return this._httpService
+      .Post<any,Prematricula>(`prematricula/add`,data);
+  }
+
+
 }

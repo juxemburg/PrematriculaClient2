@@ -15,6 +15,14 @@ export class Programa {
         public codigo: string) { }
 }
 
+export class Prematricula {
+    public fecha:Date;
+    constructor(public idEst: string, public idProg:string,
+        public materias:string[]) {
+            this.fecha = new Date();
+    }
+}
+
 export class Estudiante {
 
     public NombreCompleto: string = "";

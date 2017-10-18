@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Materia, MateriaGroup } from 'app/matricula/models/matricula-models';
+import { Materia, MateriaGroup, Prematricula } from 'app/matricula/models/matricula-models';
 import { ActivatedRoute } from '@angular/router';
 import { MatriculaService } from 'app/matricula/matricula.service';
 import { MateriaService } from 'app/matricula/materia.service';
+import { MatriculaUtil } from 'app/matricula/util/matricula-util';
 
 @Component({
   selector: 'app-matricula-wizard',
@@ -12,14 +13,14 @@ import { MateriaService } from 'app/matricula/materia.service';
 export class MatriculaWizardComponent implements OnInit {
 
 
-  private _programaId:string;
-  private _materias:MateriaGroup[];
-  private _selectedMaterias:any;
+  private _programaId: string;
+  private _materias: MateriaGroup[];
+  private _selectedMaterias: any;
   private getKeys = Object.keys;
 
-  constructor(private _route: ActivatedRoute,  
+  constructor(private _route: ActivatedRoute,
     private _service: MatriculaService,
-    private _materiaService: MateriaService) { 
+    private _materiaService: MateriaService) {
 
   }
 
@@ -38,20 +39,40 @@ export class MatriculaWizardComponent implements OnInit {
       .subscribe(data => {
         this._materias = data;
       }, err => {
-        console.log("error loading data: "+err);
+        console.log("error loading data: " + err);
       });
   }
 
-  private selectMateria(materia:Materia, value:boolean) {
-    if(value) {
+  private selectMateria(materia: Materia, value: boolean) {
+    if (value) {
       this._selectedMaterias[materia.id] = materia;
-      
     }
     else {
-      this._selectedMaterias[materia.id] = null;
+      delete this._selectedMaterias[materia.id];
     }
   }
 
-  
+  public ValidMatricula(): boolean {
+    return Object.keys(this._selectedMaterias).length > 0;
+  }
+
+  public SendMatricula(): void {
+
+    var datosPrematricula =
+      new Prematricula(this._programaId, this._programaId,
+        MatriculaUtil.ToArray<string>(this._selectedMaterias,
+          item => item.id));
+        console.log(datosPrematricula);
+    this._materiaService.postPrematricula(datosPrematricula)
+        .subscribe(data => {
+          console.log("data sent");
+        }, err => {
+          console.log("error while sending data");
+        });
+  }
+
+
+
+
 
 }
