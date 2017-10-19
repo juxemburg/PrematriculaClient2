@@ -32,12 +32,16 @@ export class MatriculaWizardComponent implements OnInit {
 
   onMateriaSelected(info: any) {
     this.selectMateria(info.result as Materia, info.value);
+    console.log("materiaSelected materias:");
+    console.log(this._selectedMaterias);
+    console.log(this.getKeys(this._selectedMaterias));
   }
 
   private loadMaterias() {
     this._materiaService.getMaterias(this._programaId)
       .subscribe(data => {
         this._materias = data;
+        
       }, err => {
         console.log("error loading data: " + err);
       });

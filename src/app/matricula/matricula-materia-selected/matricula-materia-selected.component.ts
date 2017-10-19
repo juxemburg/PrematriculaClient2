@@ -38,6 +38,8 @@ export class MatriculaMateriaSelectedComponent implements OnInit {
 
   ngOnInit() {
     this.animationState = 'in';
+    console.log("recieved materia: ");
+    console.log(this.materia);
   }
 
 
