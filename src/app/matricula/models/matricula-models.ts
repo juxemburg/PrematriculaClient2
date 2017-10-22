@@ -28,7 +28,8 @@ export class Estudiante {
     public NombreCompleto: string = "";
     
     constructor(public id: string, public nombres: string,
-        public apellidos: string) { 
+        public apellidos: string, public codigos:string[],
+        public programas:string[]) { 
             this.NombreCompleto = `${this.nombres} ${this.apellidos}`
         }   
 }

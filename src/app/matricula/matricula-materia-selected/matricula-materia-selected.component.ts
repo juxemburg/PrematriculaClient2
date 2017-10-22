@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Materia } from 'app/matricula/models/matricula-models';
 import { trigger, style, state, animate, transition } from '@angular/animations';
 
@@ -25,7 +25,8 @@ import { trigger, style, state, animate, transition } from '@angular/animations'
     ])
   ]
 })
-export class MatriculaMateriaSelectedComponent implements OnInit {
+export class MatriculaMateriaSelectedComponent implements OnInit, OnDestroy {
+  
 
   @Input()
   public materia: Materia;
@@ -38,7 +39,10 @@ export class MatriculaMateriaSelectedComponent implements OnInit {
 
   ngOnInit() {
     this.animationState = 'in';
-    console.log("materia instansiated:");
+  }
+
+  ngOnDestroy(): void {
+    this.animationState = "in";
   }
 
 

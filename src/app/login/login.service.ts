@@ -16,7 +16,6 @@ export class LoginService {
       .Post<Estudiante, LoginModel>("account/login", model)
       .do(res => {
         this._usrService.SetUser(res);
-        console.log(res);
       });
   }
 

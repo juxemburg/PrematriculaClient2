@@ -25,7 +25,7 @@
                 </a>
                 <div class="collapse" id="Components" aria-expanded="false" style="height: 0px;">
                     <ul class="nav">
-                        <li *ngFor="let prog of _programas; let i = index"  routerLinkActive="active">
+                        <li *ngFor="let prog of _programas; let i = index" routerLinkActive="active">
                             <a routerLink="wizard/{{prog.id}}">
                                 <span class="sidebar-mini">{{prog.codigo}}</span>
                                 <span class="sidebar-normal">{{prog.nombre}}</span>
@@ -40,9 +40,14 @@
                     <p>Tu plan de estudios</p>
                 </a>
             </li>
+            <li class="" routerLinkActive="active">
+                <a routerLink="history">
+                    <i class="material-icons">trending_up</i>
+                    <p>Tu historia académica</p>
+                </a>
+            </li>
             <li class="">
-                <button class="btn btn-simple btn-white"
-                 (click)="do_logoff()">
+                <button class="btn btn-simple btn-white" (click)="do_logoff()">
                     <i class="material-icons">exit_to_app</i>
                     <p class="white">Cerrar Sesión</p>
                 </button>
