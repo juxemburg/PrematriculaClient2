@@ -17,7 +17,7 @@ import { trigger, style, state, animate, transition } from '@angular/animations'
         animate('150ms ease-in')
       ]),
       transition('* => void', [
-        animate('120ms 0.1s ease-out', style({
+        animate('160ms 0.1s ease-out', style({
           opacity: 0,
           transform: 'translateX(60%)'
         }))
@@ -38,8 +38,7 @@ export class MatriculaMateriaSelectedComponent implements OnInit {
 
   ngOnInit() {
     this.animationState = 'in';
-    console.log("recieved materia: ");
-    console.log(this.materia);
+    console.log("materia instansiated:");
   }
 
 

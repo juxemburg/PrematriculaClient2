@@ -74,9 +74,4 @@ export class MatriculaWizardComponent implements OnInit {
           console.log("error while sending data");
         });
   }
-
-
-
-
-
 }

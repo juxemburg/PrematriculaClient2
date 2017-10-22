@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NavbarComponent } from './navbar/navbar.component';
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
         path:'loading',
         component: LoadingComponent
       }
-    ])
+    ]),
+    BrowserModule
   ],
   declarations: [NavbarComponent, FooterComponent, LoadingComponent],
   exports:[
@@ -25,7 +27,8 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     FooterComponent,
     BrowserAnimationsModule,
-    LoadingComponent
+    LoadingComponent,
+    BrowserModule
   ]
 })
 export class SharedModule { }

@@ -1,5 +1,4 @@
 //Módulos
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatriculaModule } from './matricula/matricula.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -22,7 +21,6 @@ import { CookieService } from "ngx-cookie-service";
     AppComponent
   ],
   imports: [
-    BrowserModule,
     SharedModule,
     MatriculaModule,
     LoginModule,

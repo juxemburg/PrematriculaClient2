@@ -17,19 +17,21 @@ export class MatriculaMateriaComponent implements OnInit {
 
 
   private _active: boolean;
+  private _class:string;
+  private baseClass = " ";
   constructor() {
   }
 
   ngOnInit() {
     this._active = false;
+    this._class = "btn btn-round btn-raised btn-white";
   }
 
   onClickEvent() {
-    setTimeout(() => {
-      console.log(this._active);
-      var res = { value: this._active, result: this.materia };
-      this.onMateriaSelected.emit(res);
-    }, 200);
+    this._active = !this._active;
+    this._class = (this._active) ? "btn btn-round btn-raised btn-primary" : "btn btn-round btn-raised btn-white";
+    var res = { value: this._active, result: this.materia };
+    this.onMateriaSelected.emit(res);
   }
 
 

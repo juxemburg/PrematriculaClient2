@@ -1,7 +1,8 @@
 <div class="togglebutton" *ngIf="materia">
-  <label>
-        <input type="checkbox" [(ngModel)]="_active"
+    <label>
+          <button [class] ="_class"
             (click)="onClickEvent()">
-        {{materia.nombre}}
-    </label>
-</div>
+              {{materia.nombre}}
+          </button>
+      </label>
+  </div>
