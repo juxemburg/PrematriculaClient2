@@ -24,13 +24,7 @@ export class SidebarComponent implements OnInit {
   }
 
   loadPrograms() {
-    this._service.Get_Programas(this._est.id)
-    .subscribe(data => {
-      this._programas = data;
-      console.log(this._programas);
-    }, err=>{
-      console.log("err");
-    });
+    this._programas = this._est.GetProgramas();
   }
 
 
