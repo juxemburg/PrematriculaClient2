@@ -41,7 +41,7 @@ export class MatriculaWizardComponent implements OnInit {
     this._materiaService.getMaterias(this._programaId)
       .subscribe(data => {
         this._materias = data;
-        
+        console.log("wizard Loaded");
       }, err => {
         console.log("error loading data: " + err);
       });

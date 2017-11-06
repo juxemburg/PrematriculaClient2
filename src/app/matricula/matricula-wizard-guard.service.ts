@@ -11,11 +11,12 @@ export class MatriculaWizardGuardService implements CanActivate {
   
   canActivate(route: ActivatedRouteSnapshot): boolean{
     let id = +route.url[1].path;
-    if(isNaN(id) || id<1 && this._usrService.IsUserActive()) {
+    if(isNaN(id) || id<1 && !this._usrService.IsUserActive()) {
       console.log("Programa inválido");
       this._router.navigate(['/dashboard']);
       return false;
     }
+    console.log("route activated");
     return true; 
   }
 

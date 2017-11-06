@@ -9,6 +9,8 @@ import { ErrorComponent } from './error/error.component';
   imports: [
     SharedModule,
     RouterModule.forRoot([
+      { path: 'dashboard', loadChildren: '../matricula/matricula.module#MatriculaModule'},
+      { path: 'login', loadChildren: '../login/login.module#LoginModule'},
       { path: '', redirectTo: 'login', pathMatch:'full' },
       { path: '**', component: ErrorComponent, pathMatch:'full' }
     ], { useHash: true })
