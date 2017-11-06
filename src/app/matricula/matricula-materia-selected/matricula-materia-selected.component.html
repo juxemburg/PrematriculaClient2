@@ -1,4 +1,17 @@
-<button class="btn btn-danger btn-round" *ngIf="materia"
- [@startAnimation] = 'animationState'>
-  {{materia.nombre}}
+<button class="btn btn-danger" *ngIf="materia" [@startAnimation]='animationState'
+(click)="onClickEvent()">
+{{materia.nombre}}
+  <!-- <div class="row">
+    <div class="col-xs-12">
+      <p>
+        
+        <span class="pull-right">
+          <i class="material-icons">
+            clear
+          </i>
+        </span>
+      </p>
+      
+    </div>
+  </div> -->
 </button>

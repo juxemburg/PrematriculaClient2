@@ -1,0 +1,15 @@
+.btn {
+    /* word-wrap:break-word;
+    white-space:normal;
+    max-width:200px;
+    padding: 12px 10px 12px 20px;   */
+}
+
+.btn p {
+    padding: 5px;
+}
+
+.no-padding {
+    padding-right: 0px !important;
+    margin-right: 0px !important;
+}

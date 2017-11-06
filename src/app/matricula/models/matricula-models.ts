@@ -11,8 +11,11 @@ export class MateriaGroup {
 }
 
 export class Programa {
+    
     constructor(public id: string, public nombre: string,
-        public codigo: string) { }
+        public codigo: string, public iniciales:string) { 
+            
+        }
 }
 
 export class Prematricula {
@@ -26,22 +29,12 @@ export class Prematricula {
 export class Estudiante {
 
     public NombreCompleto: string = "";
-    private _programas: Programa[];
 
     constructor(public id: string, public nombres: string,
         public apellidos: string, public codigos: string[],
-        public programas: string[]) {
+        public programas: Programa[]) {
         this.NombreCompleto = `${this.nombres} ${this.apellidos}`;
-        if (programas.length != codigos.length)
-            return;
 
-        for (var i in programas) {
-            this._programas.push(new Programa("P1",
-                programas[i], codigos[i]));
-        }
     }
 
-    public GetProgramas(): Programa[] {
-        return this._programas;
-    }
 }

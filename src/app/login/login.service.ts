@@ -15,6 +15,8 @@ export class LoginService {
     return this._service
       .Post<Estudiante, LoginModel>("account/login", model)
       .do(res => {
+        console.log("recieved login:");
+        console.log(res);
         this._usrService.SetUser(res);
       });
   }

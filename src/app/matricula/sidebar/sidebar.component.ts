@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
   }
 
   loadPrograms() {
-    this._programas = this._est.GetProgramas();
+    this._programas = this._est.programas;
   }
 
 

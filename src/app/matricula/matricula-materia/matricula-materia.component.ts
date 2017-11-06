@@ -34,5 +34,4 @@ export class MatriculaMateriaComponent implements OnInit {
     this.onMateriaSelected.emit(res);
   }
 
-
 }

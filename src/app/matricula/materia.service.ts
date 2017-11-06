@@ -12,7 +12,7 @@ export class MateriaService {
 
   public getMaterias(idProg) :Observable<MateriaGroup[]> {
     return this._httpService
-      .Get<MateriaGroup[]>(`materias?idProg=${idProg}`);
+      .Get<MateriaGroup[]>(`materias?idEst=${idProg}`);
   }
 
   public postPrematricula(data:Prematricula):Observable<any> {

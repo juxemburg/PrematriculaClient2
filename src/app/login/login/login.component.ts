@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       'validate' : ''
     });
   }
-
   do_login(data:any) {
     this._model.usuario = data.user;
     this._model.contrasena = data.password;

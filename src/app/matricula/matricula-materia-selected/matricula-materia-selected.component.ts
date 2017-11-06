@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { Materia } from 'app/matricula/models/matricula-models';
 import { trigger, style, state, animate, transition } from '@angular/animations';
 
@@ -31,6 +31,9 @@ export class MatriculaMateriaSelectedComponent implements OnInit, OnDestroy {
   @Input()
   public materia: Materia;
 
+  @Output()
+  public onMateriaUnSelected = new EventEmitter<any>();
+
   public animationState:string;
 
   constructor() {
@@ -43,6 +46,10 @@ export class MatriculaMateriaSelectedComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.animationState = "in";
+  }
+
+  onClickEvent() {
+    this.onMateriaUnSelected.emit(this.materia);
   }
 
 

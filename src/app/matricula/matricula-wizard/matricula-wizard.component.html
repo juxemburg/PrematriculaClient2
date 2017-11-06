@@ -49,9 +49,11 @@
                         <div aria-labelledby="headingOne" class="panel-collapse collapse" id="grp-{{grp.numSemestre}}" role="tabpanel" aria-expanded="false"
                           style="height: 0px;">
                           <div class="panel-body">
-                            <div *ngFor="let mat of grp.materias" class="col-sm-6">
-                              <app-matricula-materia [materia]="mat" (onMateriaSelected)="onMateriaSelected($event)">
-                              </app-matricula-materia>
+                            <div *ngFor="let mat of grp.materias">
+                              <div class="col-md-6">
+                                <app-matricula-materia [materia]="mat" (onMateriaSelected)="onMateriaSelected($event)">
+                                </app-matricula-materia>
+                              </div>
                             </div>
                           </div>
                         </div>

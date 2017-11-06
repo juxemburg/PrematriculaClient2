@@ -22,16 +22,11 @@ export class UserService {
   public SetUser(user:Estudiante):void {
     UserService._user = user; 
     this._cookieService.set("pm-user",JSON.stringify(user));
-    console.log(`UserId changed to ${UserService._user.id}`);
   }
 
   public RemoveUser():void {
     UserService._user = null;
     this._cookieService.deleteAll('pm');
-  }
-
-  public GetUserId():string {
-    return UserService._user.id;
   }
 
   public GetUser():Estudiante {

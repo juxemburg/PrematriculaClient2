@@ -8,9 +8,9 @@
 <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="0a316604-9dbb-0b97-3e91-d2837d461e4a">
     <div class="user">
         <div class="info text-center">
-            <h5 class="title text-white">
-                {{_est.nombres}}
-            </h5>
+            <p class="text-white">
+               {{_est.nombres}} {{_est.apellidos}}
+            </p>
         </div>
     </div>
 
@@ -26,8 +26,8 @@
                 <div class="collapse" id="Components" aria-expanded="false" style="height: 0px;">
                     <ul class="nav">
                         <li *ngFor="let prog of _programas; let i = index" routerLinkActive="active">
-                            <a routerLink="wizard/{{prog.id}}">
-                                <span class="sidebar-mini">{{prog.codigo}}</span>
+                            <a routerLink="wizard/{{prog.codigo}}">
+                                <span class="sidebar-mini">{{prog.iniciales}}</span>
                                 <span class="sidebar-normal">{{prog.nombre}}</span>
                             </a>
                         </li>
