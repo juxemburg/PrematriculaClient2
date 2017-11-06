@@ -1,7 +1,8 @@
 export class Materia {
 
     constructor(public id: string, public nombre: string,
-        public numSemestre: number, public idProg: string) { }
+        public numSemestre: number, public idProg: string,
+        public creditos: number) { }
 }
 
 export class MateriaGroup {

@@ -10,9 +10,9 @@ export class MateriaService {
      
   }
 
-  public getMaterias(idProg) :Observable<MateriaGroup[]> {
+  public getMaterias(idEst) :Observable<MateriaGroup[]> {
     return this._httpService
-      .Get<MateriaGroup[]>(`materias?idEst=${idProg}`);
+      .Get<MateriaGroup[]>(`materias/${idEst}`);
   }
 
   public postPrematricula(data:Prematricula):Observable<any> {
