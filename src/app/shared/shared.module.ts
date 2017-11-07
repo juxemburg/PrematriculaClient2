@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './loading/loading.component';
@@ -19,12 +18,11 @@ import { RouterModule } from '@angular/router';
     ]),
     BrowserModule
   ],
-  declarations: [NavbarComponent, FooterComponent, LoadingComponent],
+  declarations: [FooterComponent, LoadingComponent],
   exports:[
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NavbarComponent,
     FooterComponent,
     BrowserAnimationsModule,
     LoadingComponent,

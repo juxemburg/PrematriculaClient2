@@ -10,23 +10,21 @@ import { UserService } from 'app/login/user.service';
 })
 export class WelcomeComponent implements OnInit {
 
-  private _programas: Programa[];
-  private est:Estudiante;
+  public _programas: Programa[];
+  private est: Estudiante;
 
   constructor(private _service:ProgramaService,
     private _usrService:UserService) { }
 
   ngOnInit() {
-    
     this.loadInfo();
   }
 
   private loadInfo() {
     this.est = this._usrService.GetUser();
-    console.log("loaded user:");
+    console.log('loaded user:');
     console.log(this.est.programas);
     this._programas = this.est.programas;
   }
-  
 }
 
