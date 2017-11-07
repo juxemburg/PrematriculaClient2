@@ -28,9 +28,9 @@ export class PensumComponent implements OnInit {
       this.materias = data;
       this.isLoading = false;
     },
-       err => {
-         
-       })
+    err => {
+      console.log("error while loading materias...");
+    })
   }
 
 }

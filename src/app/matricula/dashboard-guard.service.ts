@@ -13,11 +13,11 @@ export class DashboardGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-      const value = true;
-    // var value = this._usrService.IsUserActive();
-    // if (!value) {
-    //   this._router.navigate(['/login']);
-    // }
+      // const value = true;
+    var value = this._usrService.IsUserActive();
+    if (!value) {
+      this._router.navigate(['/login']);
+    }
     return Observable.create(observable => {
       observable.next(value);
       observable.complete();

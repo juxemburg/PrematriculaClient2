@@ -1,7 +1,8 @@
 <div class="container-fluid">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="wizard-container">
-        <div class="card wizard-card" data-color="red" id="wizard">
+        <div class="card wizard-card" data-color="red" id="wizard"
+        *ngIf="!datafull">
           <form action="" method="" novalidate="validate">
             <!--You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"-->
             <div class="wizard-header">
@@ -68,7 +69,7 @@
                     </h5>
                     <div class="col-sm-12 text-center" *ngIf="_selectedMaterias">
                       <div *ngFor="let key of getKeys(_selectedMaterias)">
-                        <button class="btn btn-danger" [@startAnimation]='in'
+                        <button class="btn btn-wd btn-danger" [@startAnimation]='in'
                         (click)="onMateriaUnselected(_selectedMaterias[key])">
                           {{_selectedMaterias[key].nombre}}
                         </button>
@@ -84,7 +85,7 @@
                       <label class="control-label label-select">
                         ¿Cuántas electivas piensas matricular el próximo semestre?
                       </label>
-                      <select class=" btn btn-white btn-round" [(value)]="numElectivas">
+                      <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "numElectivas")'>
                         <option value="0">No pienso ver electivas</option>
                         <option value="1">1 Electiva</option>
                         <option value="2">2 Electivas</option>
@@ -96,32 +97,31 @@
                       <label class="control-label label-select">
                         ¿Cuántas electivas FISH piensas ver el próximo semestre?
                       </label>
-                      <select class=" btn btn-white btn-round">
+                      <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "numFish")'>
                         <option value="0">No pienso matricular FISH</option>
                         <option value="1">1 FISH</option>
                         <option value="2">2 FISH</option>
                         <option value="3">3 FISH</option>
                       </select>
                     </div>
-  
                   </div>
                   <div class="col-sm-6 col-lg-5">
                     <div class="form-group">
                       <label class="control-label label-select">
                         ¿Tienes pensado matricular ética el próximo semestre?
                       </label>
-                      <select class=" btn btn-white btn-round">
-                        <option value="true">Sí</option>
+                      <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "etica")'>
                         <option value="false">No</option>
+                        <option value="true">Sí</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label class="control-label label-select">
                         ¿Tienes pensado matricular Actividad Física Formativa?
                       </label>
-                      <select class=" btn btn-white btn-round">
-                        <option value="true">Sí</option>
+                      <select class=" btn btn-white btn-round" (change)='onSelectChanged($event, "aff")'>
                         <option value="false">No</option>
+                        <option value="true">Sí</option>
                       </select>
                     </div>
                   </div>
@@ -136,21 +136,25 @@
                       </div>
                       <div class="card-content">
                         <h4 class="card-title">Tu Matrícula</h4>
-                        <div class="content table-responsive">
-                          <table class="table">
-                            <thead class="text-primary">
-                              <tr>
-                                <th>Semestre</th>
-                                <th class="text-center">Materia</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let key of getKeys(_selectedMaterias)">
-                                <td class="text-center">{{_selectedMaterias[key].numSemestre}}</td>
-                                <td class="text-center">{{_selectedMaterias[key].nombre}}</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                        <app-loading *ngIf="sendingData">
+                        </app-loading>
+                        <div *ngIf="!sendingData">
+                          <div class="content table-responsive">
+                            <table class="table">
+                              <thead class="text-primary">
+                                <tr>
+                                  <th>Semestre</th>
+                                  <th class="text-center">Materia</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let key of getKeys(_selectedMaterias)">
+                                  <td class="text-center">{{_selectedMaterias[key].numSemestre}}</td>
+                                  <td class="text-center">{{_selectedMaterias[key].nombre}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -171,6 +175,17 @@
               <div class="clearfix"></div>
             </div>
           </form>
+        </div>
+        <div class="card" *ngIf="datafull">
+          <div class="card-content">
+            Prematricula realizada con éxito!
+            <h3 class="title">
+              <i class="material-icons">done</i>
+            </h3>
+            <button class="btn btn-round btn-danger">
+              Realizar otra vez
+            </button>
+          </div>
         </div>
       </div>
     </div>

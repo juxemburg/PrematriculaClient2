@@ -11,7 +11,7 @@ import { trigger, style, state, animate, transition } from '@angular/animations'
   styleUrls: ['./matricula-wizard.component.css'],
   animations: [
     trigger('startAnimation', [
-      state('in', style({opacity: 1, transform: 'translateX(0)'})),
+      state('in', style({ opacity: 1, transform: 'translateX(0)' })),
       transition('void => *', [
         style({
           opacity: 0,
@@ -33,18 +33,20 @@ export class MatriculaWizardComponent implements OnInit {
 
   private _estudianteId: string;
   private _programaId: string;
-  private _materias: MateriaGroup[];
-  private _selectedMaterias: any;
+  public _materias: MateriaGroup[];
+  public _selectedMaterias: any;
   private _callbacks: any;
-  private getKeys = Object.keys;
-  private _isLoading:boolean = true;
+  public getKeys = Object.keys;
+  public _isLoading: boolean = true;
+  public sendingData: boolean = false;
+  public datafull: boolean = false;
 
-  public _prematricula:Prematricula;
+  public _prematricula: Prematricula;
 
-  public numElectivas: string = "0";
-  public numFish: string = "0";
-  public etica:string = "false";
-  public aff: string = "false";
+  public numElectivas: number = 0;
+  public numFish: number = 0;
+  public etica: boolean = false;
+  public aff: boolean = false;
 
   constructor(private _route: ActivatedRoute,
     private _service: MatriculaService,
@@ -63,11 +65,31 @@ export class MatriculaWizardComponent implements OnInit {
 
   onMateriaSelected(info: any) {
     this.selectMateria(info.result as Materia, info.value,
-       info.callback);
+      info.callback);
   }
 
   onMateriaUnselected(materia: Materia) {
     this.selectMateria(materia, false);
+  }
+
+  onSelectChanged(event: any, type: string) {
+    let value = event.target.value;
+    switch (type) {
+      case 'numElectivas':
+        this.numElectivas = parseInt(value);
+        break;
+      case 'numFish':
+        this.numFish = parseInt(value);
+        break;
+      case 'etica':
+        this.etica = value == 'true';
+        break;
+      case 'aff':
+        this.aff = value == 'true';
+        break;
+      default:
+        break;
+    }
   }
 
   private async loadData() {
@@ -88,13 +110,14 @@ export class MatriculaWizardComponent implements OnInit {
   }
   private async loadPrematricula() {
     this._service.Get_Prematricula(this._estudianteId,
-       this._programaId)
-    .subscribe(data => {
-      this._prematricula = data;
-      console.log(data);
-    }, err => {
-      console.log("error loading data: " + err);
-    })
+      this._programaId)
+      .subscribe(data => {
+        this._prematricula = data;
+        this.datafull = this._prematricula.diligenciada;
+        console.log(data);
+      }, err => {
+        console.log("error loading data: " + err);
+      })
   }
 
   private selectMateria(materia: Materia, value: boolean,
@@ -115,20 +138,22 @@ export class MatriculaWizardComponent implements OnInit {
   }
 
   public SendMatricula(): void {
+    this.sendingData = true;
     var datosPrematricula =
       new Prematricula(this._estudianteId, this._programaId,
-        "",MatriculaUtil.ToArray<string>(this._selectedMaterias,
-          item => item.id),parseInt(this.numElectivas),
-          parseInt(this.numFish),
-          this.etica=='true', this.aff=='true');
-        console.log(datosPrematricula);
+        "", MatriculaUtil.ToArray<string>(this._selectedMaterias,
+          item => item.id), this.numElectivas,
+        this.numFish, this.etica, this.aff);
+    console.log(datosPrematricula);
+
     this._materiaService.postPrematricula(datosPrematricula)
-        .subscribe(data => {
-          debugger;
-          console.log(datosPrematricula);
-          console.log("data sent");
-        }, err => {
-          console.log("error while sending data");
-        });
+      .subscribe(data => {
+        console.log(datosPrematricula);
+        console.log("data sent");
+        this.sendingData = false;
+        this.datafull = true;
+      }, err => {
+        console.log("error while sending data");
+      });
   }
 }
