@@ -8,10 +8,6 @@
 }
 
 .card-header {
-    max-width: 80% !important;
+    max-width: 60% !important;
     margin: auto;
 }
-
-/* .card-login {
-    margin-right: 1%;
-} */
