@@ -17,7 +17,7 @@ export class MatriculaMateriaComponent implements OnInit {
 
 
   private _active: boolean;
-  private _class:string;
+  private _class: string;
   private baseClass = " ";
   constructor() {
   }
@@ -29,9 +29,21 @@ export class MatriculaMateriaComponent implements OnInit {
 
   onClickEvent() {
     this._active = !this._active;
-    this._class = (this._active) ? "btn btn-round btn-raised btn-primary" : "btn btn-round btn-raised btn-white";
-    var res = { value: this._active, result: this.materia };
+    this.setClass();
+    var res = {
+      value: this._active,
+      result: this.materia,
+      callback: () => { 
+        console.log(this._active);
+        this._active = false;
+        this.setClass();
+      }
+    };
     this.onMateriaSelected.emit(res);
+  }
+
+  setClass() {
+    this._class = (this._active) ? "btn btn-round btn-raised btn-primary" : "btn btn-round btn-raised btn-white";
   }
 
 }

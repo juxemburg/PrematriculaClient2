@@ -31,11 +31,12 @@
                   <div class="col-sm-12">
                     <h4 class="info-text"> Selecciona las materias que planeas ver el siguiente semestre</h4>
                   </div>
-                  <div class="col-sm-7" *ngIf="_materias">
+                  <div class="col-sm-7">
                     <h5 class="title text-center">
                       Tus materias
                     </h5>
-                    <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist">
+                    <app-loading *ngIf="_isLoading"></app-loading>
+                    <div aria-multiselectable="true" class="panel-group" id="accordion" role="tablist" *ngIf="_materias">
                       <div class="panel panel-default" *ngFor="let grp of _materias">
                         <div class="panel-heading" id="headingOne" role="tab">
                           <a aria-controls="headingOne" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#grp-{{grp.numSemestre}}"
@@ -65,10 +66,12 @@
                     <h5 class="title text-center">
                       Tu prematrícula
                     </h5>
-                    <div class="col-sm-12" *ngIf="_selectedMaterias">
+                    <div class="col-sm-12 text-center" *ngIf="_selectedMaterias">
                       <div *ngFor="let key of getKeys(_selectedMaterias)">
-                        <app-matricula-materia-selected [materia]="_selectedMaterias[key]">
-                        </app-matricula-materia-selected>
+                        <button class="btn btn-danger" [@startAnimation]='in'
+                        (click)="onMateriaUnselected(_selectedMaterias[key])">
+                          {{_selectedMaterias[key].nombre}}
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -81,7 +84,7 @@
                       <label class="control-label label-select">
                         ¿Cuántas electivas piensas matricular el próximo semestre?
                       </label>
-                      <select class=" btn btn-white btn-round">
+                      <select class=" btn btn-white btn-round" [(value)]="numElectivas">
                         <option value="0">No pienso ver electivas</option>
                         <option value="1">1 Electiva</option>
                         <option value="2">2 Electivas</option>
@@ -108,8 +111,8 @@
                         ¿Tienes pensado matricular ética el próximo semestre?
                       </label>
                       <select class=" btn btn-white btn-round">
-                        <option value="0">Sí</option>
-                        <option value="1">No</option>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -117,8 +120,8 @@
                         ¿Tienes pensado matricular Actividad Física Formativa?
                       </label>
                       <select class=" btn btn-white btn-round">
-                        <option value="0">Sí</option>
-                        <option value="1">No</option>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
                       </select>
                     </div>
                   </div>

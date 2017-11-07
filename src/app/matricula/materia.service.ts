@@ -17,8 +17,7 @@ export class MateriaService {
 
   public postPrematricula(data:Prematricula):Observable<any> {
     return this._httpService
-      .Post<any,Prematricula>(`prematricula/add`,data);
+      .Post<any,Prematricula>(`prematricula/`,data);
   }
-
 
 }

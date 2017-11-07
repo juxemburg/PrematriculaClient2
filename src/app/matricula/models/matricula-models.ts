@@ -21,8 +21,12 @@ export class Programa {
 
 export class Prematricula {
     public fecha: Date;
+    public diligenciada: boolean;
+
     constructor(public idEst: string, public idProg: string,
-        public materias: string[]) {
+        public periodo: string, public materias: string[],
+        public numElectivas:number, public numFish:number,
+        public etica:boolean, public aff:boolean ) {
         this.fecha = new Date();
     }
 }
@@ -30,7 +34,6 @@ export class Prematricula {
 export class Estudiante {
 
     public NombreCompleto: string = "";
-
     constructor(public id: string, public nombres: string,
         public apellidos: string, public codigos: string[],
         public programas: Programa[]) {
