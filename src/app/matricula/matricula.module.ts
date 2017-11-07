@@ -10,7 +10,6 @@ import { MatriculaService } from 'app/matricula/matricula.service';
 import { DashboardGuardService } from 'app/matricula/dashboard-guard.service';
 import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guard.service';
 import { MateriaService } from 'app/matricula/materia.service';
-import { MatriculaMateriaSelectedComponent } from './matricula-materia-selected/matricula-materia-selected.component';
 import { ProgramaService } from './programa.service';
 import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia.component';
 
@@ -26,13 +25,15 @@ import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia
         children: [
           {path:'', redirectTo: 'welcome', pathMatch: 'full'},
           {path:'welcome', component: WelcomeComponent},
-          {path:'wizard/:id',
+          {path:'wizard/:id/:idProg',
           canActivate: [MatriculaWizardGuardService],
           component: MatriculaWizardComponent}]
       },
     ])
   ],
-  declarations: [DashboardComponent, SidebarComponent, MatriculaWizardComponent, DashboardNavbarComponent, WelcomeComponent, MatriculaMateriaSelectedComponent, MatriculaMateriaComponent],
+  declarations: [DashboardComponent, SidebarComponent,
+     MatriculaWizardComponent, DashboardNavbarComponent,
+      WelcomeComponent, MatriculaMateriaComponent],
   providers:[MatriculaService, MateriaService, ProgramaService]
 })
 export class MatriculaModule { }

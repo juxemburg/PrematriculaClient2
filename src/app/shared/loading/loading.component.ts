@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-loading',
@@ -7,21 +7,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LoadingComponent implements OnInit {
 
-  private _isLoaded: boolean;
-
-  @Output()
-  loadingChange = new EventEmitter<boolean>();
-
   constructor() { 
 
   }
 
   ngOnInit() {
-    this._isLoaded = false;
+    
   }
 
-  public SetLoading(value:boolean) {
-    this._isLoaded = value;
-  }
 
 }
