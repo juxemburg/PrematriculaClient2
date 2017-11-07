@@ -6,3 +6,8 @@
 .login-page > .content, .lock-page > .content {
     padding-top: 4vh;
 }
+
+.card-header {
+    max-width: 60% !important;
+    margin: auto;
+}
