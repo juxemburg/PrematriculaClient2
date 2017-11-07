@@ -6,3 +6,12 @@
 .login-page > .content, .lock-page > .content {
     padding-top: 4vh;
 }
+
+.card-header {
+    max-width: 80% !important;
+    margin: auto;
+}
+
+/* .card-login {
+    margin-right: 1%;
+} */
