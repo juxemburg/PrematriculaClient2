@@ -6,3 +6,5 @@
 [1001/154835.096:ERROR:process_info.cc(632)] range at 0x0, size 0x1af fully unreadable
 [1106/173205.175:ERROR:crash_report_database_win.cc(427)] unexpected header
 [1106/193057.068:ERROR:crash_report_database_win.cc(427)] unexpected header
+[1107/072801.712:ERROR:crash_report_database_win.cc(427)] unexpected header
+[1107/073627.834:ERROR:crash_report_database_win.cc(427)] unexpected header
