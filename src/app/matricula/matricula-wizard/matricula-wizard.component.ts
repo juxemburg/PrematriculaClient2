@@ -37,7 +37,7 @@ export class MatriculaWizardComponent implements OnInit {
   private _selectedMaterias: any;
   private _callbacks: any;
   private getKeys = Object.keys;
-  private _isLoading:boolean = false;
+  private _isLoading:boolean = true;
 
   public _prematricula:Prematricula;
 
@@ -53,6 +53,7 @@ export class MatriculaWizardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._isLoading = true;
     this._estudianteId = this._route.snapshot.paramMap.get('id');
     this._programaId = this._route.snapshot.paramMap.get('idProg');
     this.loadData();
@@ -80,6 +81,7 @@ export class MatriculaWizardComponent implements OnInit {
       .subscribe(data => {
         this._materias = data;
         console.log("wizard Loaded");
+        this._isLoading = false;
       }, err => {
         console.log("error loading data: " + err);
       });

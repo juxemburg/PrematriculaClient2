@@ -15,6 +15,11 @@ export class MateriaService {
       .Get<MateriaGroup[]>(`materias/${idEst}`);
   }
 
+  public getPensum(idEst) : Observable<MateriaGroup[]> {
+    return this._httpService
+    .Get<MateriaGroup[]>(`materias/historial/${idEst}`);
+  }
+
   public postPrematricula(data:Prematricula):Observable<any> {
     return this._httpService
       .Post<any,Prematricula>(`prematricula/`,data);

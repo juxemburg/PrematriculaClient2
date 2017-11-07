@@ -12,6 +12,8 @@ import { MatriculaWizardGuardService } from 'app/matricula/matricula-wizard-guar
 import { MateriaService } from 'app/matricula/materia.service';
 import { ProgramaService } from './programa.service';
 import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia.component';
+import { HistoryComponent } from './history/history.component';
+import { PensumComponent } from './pensum/pensum.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia
         children: [
           {path:'', redirectTo: 'welcome', pathMatch: 'full'},
           {path:'welcome', component: WelcomeComponent},
+          {path:'history', component: HistoryComponent},
+          {path:'curriculum/:idEst', component: PensumComponent},
           {path:'wizard/:id/:idProg',
           canActivate: [MatriculaWizardGuardService],
           component: MatriculaWizardComponent}]
@@ -33,7 +37,7 @@ import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia
   ],
   declarations: [DashboardComponent, SidebarComponent,
      MatriculaWizardComponent, DashboardNavbarComponent,
-      WelcomeComponent, MatriculaMateriaComponent],
+      WelcomeComponent, MatriculaMateriaComponent, HistoryComponent, PensumComponent],
   providers:[MatriculaService, MateriaService, ProgramaService]
 })
 export class MatriculaModule { }

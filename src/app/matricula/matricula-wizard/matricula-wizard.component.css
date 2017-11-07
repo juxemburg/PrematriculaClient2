@@ -1628,6 +1628,7 @@
   
     .btn-wd {
       min-width: 140px;
+      max-width: 200px;
     }
   }
   

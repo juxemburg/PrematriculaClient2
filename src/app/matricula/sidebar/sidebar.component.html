@@ -9,42 +9,43 @@
     <div class="user">
         <div class="info text-center">
             <p class="text-white">
-               {{_est.nombres}} {{_est.apellidos}}
+                {{_est.nombres}} {{_est.apellidos}}
             </p>
         </div>
     </div>
 
     <div class="nav-container">
         <ul class="nav">
-            <li *ngIf="_programas.length >0">
+            <li *ngFor="let prog of _programas; let i = index">
                 <a data-toggle="collapse" href="#Components" class="collapsed" aria-expanded="false">
                     <i class="material-icons">dashboard</i>
-                    <p>Prematrícula
+                    <p>
+                        {{prog.nombre}}
                         <b class="caret"></b>
                     </p>
                 </a>
                 <div class="collapse" id="Components" aria-expanded="false" style="height: 0px;">
                     <ul class="nav">
-                        <li *ngFor="let prog of _programas; let i = index" routerLinkActive="active">
+                        <li routerLinkActive="active">
                             <a routerLink="wizard/{{prog.codigo}}/{{prog.id}}">
                                 <span class="sidebar-mini">{{prog.iniciales}}</span>
-                                <span class="sidebar-normal">{{prog.nombre}}</span>
+                                <span class="sidebar-normal">Prematrícula</span>
+                            </a>
+                        </li>
+                        <li class="" routerLinkActive="active">
+                            <a routerLink="curriculum/{{prog.codigo}}">
+                                <i class="material-icons">apps</i>
+                                <p>Tu plan de estudios</p>
+                            </a>
+                        </li>
+                        <li class="" routerLinkActive="active">
+                            <a routerLink="history">
+                                <i class="material-icons">trending_up</i>
+                                <p>Tu historia académica</p>
                             </a>
                         </li>
                     </ul>
                 </div>
-            </li>
-            <li class="" routerLinkActive="active">
-                <a routerLink="curriculum">
-                    <i class="material-icons">apps</i>
-                    <p>Tu plan de estudios</p>
-                </a>
-            </li>
-            <li class="" routerLinkActive="active">
-                <a routerLink="history">
-                    <i class="material-icons">trending_up</i>
-                    <p>Tu historia académica</p>
-                </a>
             </li>
             <li class="">
                 <button class="btn btn-simple btn-white" (click)="do_logoff()">
