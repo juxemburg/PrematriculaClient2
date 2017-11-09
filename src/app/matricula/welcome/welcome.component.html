@@ -7,7 +7,7 @@
       <div class="col-sm-8 col-sm-offset-2 text-center" 
         *ngIf='_programas'>
         <div *ngFor="let prog of _programas">
-          <a routerLink="/dashboard/wizard/{{prog.codigo}}" 
+          <a routerLink="/dashboard/wizard/{{prog.codigo}}/{{prog.id}}" 
             class="btn btn-round btn-xl btn-warning">
             {{prog.nombre}}
           </a>

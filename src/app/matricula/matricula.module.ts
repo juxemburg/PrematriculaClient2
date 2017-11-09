@@ -14,26 +14,13 @@ import { ProgramaService } from './programa.service';
 import { MatriculaMateriaComponent } from './matricula-materia/matricula-materia.component';
 import { HistoryComponent } from './history/history.component';
 import { PensumComponent } from './pensum/pensum.component';
+import { MatriculaRoutes } from 'app/matricula/matricula.module.routes';
 
 
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild([
-      {
-        path: 'dashboard',
-        canActivate:[DashboardGuardService],
-        component: DashboardComponent,
-        children: [
-          {path:'', redirectTo: 'welcome', pathMatch: 'full'},
-          {path:'welcome', component: WelcomeComponent},
-          {path:'history', component: HistoryComponent},
-          {path:'curriculum/:idEst', component: PensumComponent},
-          {path:'wizard/:id/:idProg',
-          canActivate: [MatriculaWizardGuardService],
-          component: MatriculaWizardComponent}]
-      },
-    ])
+    RouterModule.forChild(MatriculaRoutes.routes)
   ],
   declarations: [DashboardComponent, SidebarComponent,
      MatriculaWizardComponent, DashboardNavbarComponent,

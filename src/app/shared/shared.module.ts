@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './loading/loading.component';
 import { RouterModule } from '@angular/router';
+import { LocalDataService } from './local-data.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     LoadingComponent,
     BrowserModule
-  ]
+  ],
+  providers: [LocalDataService]
 })
 export class SharedModule { }

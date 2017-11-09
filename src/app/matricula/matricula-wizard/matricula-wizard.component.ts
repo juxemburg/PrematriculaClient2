@@ -114,6 +114,7 @@ export class MatriculaWizardComponent implements OnInit {
       .subscribe(data => {
         this._prematricula = data;
         this.datafull = this._prematricula.diligenciada;
+        debugger;
         console.log(data);
       }, err => {
         console.log("error loading data: " + err);
@@ -137,13 +138,17 @@ export class MatriculaWizardComponent implements OnInit {
     return Object.keys(this._selectedMaterias).length > 0;
   }
 
+  public redoMatricula():void {
+    this.datafull = false;
+  }
+
   public SendMatricula(): void {
     this.sendingData = true;
     var datosPrematricula =
       new Prematricula(this._estudianteId, this._programaId,
         "", MatriculaUtil.ToArray<string>(this._selectedMaterias,
           item => item.id), this.numElectivas,
-        this.numFish, this.etica, this.aff);
+        this.numFish, this.etica, this.aff, true);
     console.log(datosPrematricula);
 
     this._materiaService.postPrematricula(datosPrematricula)
@@ -157,3 +162,4 @@ export class MatriculaWizardComponent implements OnInit {
       });
   }
 }
+
