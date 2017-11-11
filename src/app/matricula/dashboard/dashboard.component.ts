@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as perfectScrollbar from "perfect-scrollbar";
+import perfectScrollbar from "perfect-scrollbar";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     var element = document.getElementById('dashboard-container');
-    this._container = perfectScrollbar.initialize(element);
+    this._container = new perfectScrollbar('#dashboard-container');
   }
 
 }

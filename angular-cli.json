@@ -21,7 +21,7 @@
       "styles": [
         "./assets/css/material-dashboard.css",
         "./assets/css/material-bootstrap-wizard.css",
-        "../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css",
+        "../node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
         "styles.css"
       ],
       "scripts": [
